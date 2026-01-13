@@ -159,4 +159,44 @@ h3 { font-family: 'Orbitron'; color: var(--neon-blue); }
 @media (max-width: 768px) {
     .card, .card.reverse { flex-direction: column; }
     h1 { font-size: 2.5rem; }
+
+}
+
+/* SCANLINE OVERLAY */
+body::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 100; /* sits on top of everything */
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none; /* lets you click through it */
+}
+
+/* TYPEWRITER ANIMATION */
+.typing-effect {
+    overflow: hidden; /* Hides text outside the cursor */
+    border-right: 3px solid var(--neon-blue); /* The cursor */
+    white-space: nowrap; /* Keeps text on one line */
+    margin: 0 auto; /* Centers it */
+    letter-spacing: 0.15em;
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+
+/* The typing movement */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* The blinking cursor */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--neon-blue); }
 }
